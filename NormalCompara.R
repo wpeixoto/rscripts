@@ -10,7 +10,8 @@ dnormalComp <- function(
   subtitle = "",
   a1n = "",
   a2n = "",
-  x_lab = "x"
+  xlab = "x",
+  by = 0.0001
 )
 {
   proba_z_1_2 <- function(z1, z2) {
@@ -31,7 +32,7 @@ dnormalComp <- function(
     min(c(media1+c(-4,4)*dp1, media2+c(-4,4)*dp2)), 
     max(c(media1+c(-4,4)*dp1, media2+c(-4,4)*dp2))
   )
-  x <- seq(lim[1], lim[2], by = 0.0001)
+  x <- seq(lim[1], lim[2], by = by)
   
   # curva normal ========
   cn1 <- function(x) {dnorm(x,media1,dp1)} # curva normal
@@ -40,14 +41,14 @@ dnormalComp <- function(
   # traça as curvas normais 1 e 2
   ppp = NULL
   if(cn1(media1)>=cn2(media2)){
-    # x_lab <- "x"
-    ppp=plot(x,cn1(x),ylab="Densidade",xlab=x_lab,
+    # xlab <- "x"
+    ppp=plot(x,cn1(x),ylab="Densidade",xlab=xlab,
          main=main_title,type="l",lwd=2, 
          sub = subtitle  # paste(subtitle, "black")
          )
     lines(x,cn2(x),lwd=2, col="red")
   } else {
-    ppp=plot(x,cn2(x),ylab="Densidade",xlab=x_lab,
+    ppp=plot(x,cn2(x),ylab="Densidade",xlab=xlab,
          main=main_title,type="l",lwd=2,col="red",
          sub = subtitle  # paste(subtitle, "red")
          )
