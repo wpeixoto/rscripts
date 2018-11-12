@@ -11,7 +11,8 @@ dnormalComp <- function(
   a1n = "",
   a2n = "",
   xlab = "x",
-  by = 0.0001
+  by = 0.0001,
+  legpos = "topright"
 )
 {
   proba_z_1_2 <- function(z1, z2) {
@@ -101,7 +102,7 @@ dnormalComp <- function(
   lines(c(i,i),c(-1,cn2(i)),col="red",lty=4,lwd=2)
   
   if (a1n != "" & a2n != "") {
-    legend("topright", 
+    legend(legpos, 
            text.col=c("black", "red"), 
            legend = c(a1n, a2n))
   }
